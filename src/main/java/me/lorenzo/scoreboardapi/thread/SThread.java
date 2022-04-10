@@ -15,6 +15,7 @@ import java.util.List;
 public class SThread extends Thread {
 
     private final ScoreboardAPI scoreboardAPI;
+    private boolean reversed = false;
 
     public SThread(ScoreboardAPI scoreboardAPI) {
         this.scoreboardAPI = scoreboardAPI;
@@ -73,7 +74,10 @@ public class SThread extends Thread {
 
 
                     if (!this.scoreboardAPI.getStyle().isDescending()) {
-                        Collections.reverse(newLines);
+                        if(!reversed) {
+                            Collections.reverse(newLines);
+                            reversed = true;
+                        }
                     }
 
 
